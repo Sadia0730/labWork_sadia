@@ -1,0 +1,54 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int duration,dep,time,j;
+    float downpayment,loan,percent,arr[100],ini_value,car_worth,installment;
+    while(1)
+    {
+        cin>>duration>>downpayment>>loan>>dep;
+        installment=loan/duration;
+        if(duration<0)
+        {
+            break;
+        }
+        else
+        {
+                while(dep--)
+                {
+                    cin>>time>>percent;
+                    for(int i=time;i<=100;i++)
+                    {
+                        arr[i]=percent;
+
+                    }
+                }
+                j=0;
+                ini_value=loan+downpayment;
+                car_worth=ini_value*(1-arr[j]);
+                while(car_worth<loan)
+                {
+                    j++;
+                    car_worth=car_worth*(1-arr[j]);
+                    loan=loan-installment;
+
+
+                }
+
+
+        }
+        if(j==1)
+        {
+            cout<<j<<" month"<<endl;
+        }
+        else
+        {
+            cout<<j<<" months"<<endl;
+
+        }
+
+    }
+
+
+}
